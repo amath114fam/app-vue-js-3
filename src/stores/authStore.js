@@ -44,7 +44,6 @@ async initialiserSession() {
   const { data } = await supabase.auth.getSession()
   this.user = data.session?.user ?? null
   console.log(this.user);
-  
 }
 }
 })

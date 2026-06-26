@@ -35,7 +35,7 @@ async function soumettre() {
     <div class="auth-card">
 
       <div class="auth-header">
-        <h1 class="auth-logo">💡 IdeaVault</h1>
+        <h1 class="auth-logo">💡 Sunnu Idéé</h1>
         <p class="auth-subtitle">Garde tes idées, change le monde</p>
       </div>
 
