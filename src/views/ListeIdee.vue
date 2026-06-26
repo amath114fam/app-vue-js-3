@@ -2,10 +2,13 @@
 <div class="container">
   <div class="page-header">
     <h1>Mes idées</h1>
-    <RouterLink to="/ajouter-idee" class="btn-add">
-      <i class="ti ti-plus"></i>
-      Ajouter une idée
-    </RouterLink>
+    <div class="content-btn">
+      <RouterLink to="/ajouter-idee" class="btn-add">
+        <i class="ti ti-plus"></i>
+        Ajouter une idée
+      </RouterLink>
+      <button class="btn-add" @click="logOut">Déconnexion</button>
+    </div>
   </div>
 </div>
 
@@ -40,7 +43,14 @@ import { RouterLink } from 'vue-router'
 import { computed } from 'vue'
 import { ref } from 'vue'
 import {onMounted} from 'vue'
+import { useAuthStore } from '../stores/authStore.js'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()  
+
 const ideeStore = useIdeeStore()
+
+const authStore = useAuthStore()
 
 onMounted(() => {
   ideeStore.chargerIdees()
@@ -58,6 +68,17 @@ const ideesFiltrees = computed(() => {
 function supprimerIdee(id) {
   ideeStore.supprimerIdee(id)  
 }
+
+
+async function logOut() {
+  try {
+    await authStore.deconnexion()
+    router.push('/login')
+  } catch (error) {
+    console.error('Erreur de déconnexion :', error)
+  }
+}
+
 </script>
 <style  scoped>
 .container {
@@ -72,6 +93,16 @@ function supprimerIdee(id) {
   margin-bottom: 2rem;
 }
 
+button{
+  border: none;
+}
+
+.content-btn{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 1rem;
+}
 .btn-add {
   display: flex;
   align-items: center;
