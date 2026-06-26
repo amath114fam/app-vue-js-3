@@ -78,7 +78,7 @@ async function soumettre() {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #0f0f1a;
+  /* background: #0f0f1a; */
 }
 
 .auth-card {
